@@ -1,17 +1,21 @@
 import React from 'react';
+import { useState } from 'react';
 
 export default function Home() {
+  const [name, setName] = useState('Jhorgi');
+  const [age, setAge] = useState(25);
+
   const handleClick = () => {
-    console.log('Hello, Ninja!');
-  };
-  const handleClickAgain = (nama, e) => {
-    console.log('Hello ' + nama, e.target);
+    setName('Luigi');
+    setAge(30);
   };
   return (
     <div className="home">
       <h2>Homepage</h2>
+      <p>
+        {name} is {age} years old
+      </p>
       <button onClick={handleClick}>Click Me</button>
-      <button onClick={(e) => handleClickAgain('mario', e)}>Click Me Again</button>
     </div>
   );
 }
