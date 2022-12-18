@@ -7,10 +7,14 @@ export default function Home() {
     { tittle: 'My old website', body: 'lorem ipsum...', author: 'yoshi', id: 2 },
     { tittle: 'Build website from scratch', body: 'lorem ipsum...', author: 'mario', id: 3 },
   ]);
+
+  const handleDelete = (id) => {
+    const newBlogs = blogs.filter((blog) => blog.id !== id); //only show if it true
+    setBlogs(newBlogs);
+  };
   return (
     <div className="home">
-      <BlogList blogs={blogs} tittle="All Blogs!" />
-      <BlogList blogs={blogs.filter((blog) => blog.author === 'mario')} tittle="Mario's blogs" />
+      <BlogList blogs={blogs} tittle="All Blogs!" handleDelete={handleDelete} />
     </div>
   );
 }
