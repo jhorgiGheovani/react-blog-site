@@ -1,5 +1,5 @@
 import React from 'react';
-export default function BlogList({ blogs, tittle, handleDelete }) {
+export default function BlogList({ blogs, tittle }) {
   //   const blogs = props.blogs;
   return (
     <div>
@@ -8,7 +8,6 @@ export default function BlogList({ blogs, tittle, handleDelete }) {
         <div className="blog-preview" key={blog.id}>
           <h2>{blog.tittle}</h2>
           <p>Written by {blog.author}</p>
-          <button onClick={() => handleDelete(blog.id)}>delete blog</button>
         </div>
       ))}
     </div>
