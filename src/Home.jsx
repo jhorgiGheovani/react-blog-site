@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import BlogList from './BlogList';
 export default function Home() {
   const [blogs, setBlogs] = useState(null);
+  const [isPending, setIsPending] = useState(true);
 
   useEffect(() => {
     fetch('http://localhost:8000/blogs')
@@ -10,9 +11,14 @@ export default function Home() {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setBlogs(data);
+        setIsPending(false);
       });
   }, []);
-  return <div className="home">{blogs && <BlogList blogs={blogs} tittle="All Blogs!" />}</div>;
+  return (
+    <div className="home">
+      {isPending && <div>Loading...</div>}
+      {blogs && <BlogList blogs={blogs} tittle="All Blogs!" />}
+    </div>
+  );
 }
